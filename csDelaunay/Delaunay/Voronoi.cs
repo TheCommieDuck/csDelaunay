@@ -132,10 +132,10 @@ namespace csDelaunay {
 
 			EdgeReorderer reorderer = new EdgeReorderer(hullEdges, typeof(Site));
 			hullEdges = reorderer.Edges;
-			List<LR> orientations = reorderer.EdgeOrientations;
+			List<byte> orientations = reorderer.EdgeOrientations;
 			reorderer.Dispose();
 
-			LR orientation;
+			byte orientation;
 			for (int i = 0; i < hullEdges.Count; i++) {
 				Edge edge = hullEdges[i];
 				orientation = orientations[i];
@@ -156,7 +156,7 @@ namespace csDelaunay {
 			Site newSite, bottomSite, topSite, tempSite;
 			Vertex v, vertex;
 			Vector2f newIntStar = Vector2f.zero;
-			LR leftRight;
+			byte leftRight;
 			Halfedge lbnd, rbnd, llbnd, rrbnd, bisector;
 			Edge edge;
 
@@ -195,7 +195,7 @@ namespace csDelaunay {
 					//UnityEngine.Debug.Log("new edge: " + edge);
 					edges.Add(edge);
 
-					bisector = Halfedge.Create(edge, LR.LEFT);
+					bisector = Halfedge.Create(edge, LR.Left);
 					halfEdges.Add(bisector);
 					// Inserting two halfedges into edgelist constitutes Step 10:
 					// Insert bisector to the right of lbnd:
@@ -211,7 +211,7 @@ namespace csDelaunay {
 					}
 
 					lbnd = bisector;
-					bisector = Halfedge.Create(edge, LR.RIGHT);
+					bisector = Halfedge.Create(edge, LR.Right);
 					halfEdges.Add(bisector);
 					// Second halfedge for Step 10::
 					// Insert bisector to the right of lbnd:
@@ -245,12 +245,12 @@ namespace csDelaunay {
 					edgeList.Remove(lbnd);
 					heap.Remove(rbnd);
 					edgeList.Remove(rbnd);
-					leftRight = LR.LEFT;
+					leftRight = LR.Left;
 					if (bottomSite.y > topSite.y) {
 						tempSite = bottomSite;
 						bottomSite = topSite;
 						topSite = tempSite;
-						leftRight = LR.RIGHT;
+						leftRight = LR.Right;
 					}
 					edge = Edge.CreateBisectingEdge(bottomSite, topSite);
 					edges.Add(edge);

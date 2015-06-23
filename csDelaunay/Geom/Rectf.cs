@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-
+﻿
 public struct Rectf {
 	
 	public static readonly Rectf zero = new Rectf(0,0,0,0);
