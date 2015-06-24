@@ -3,7 +3,7 @@
 // Recreation of the UnityEngine.Vector3, so it can be used in other thread
 public struct Vector2f {
 	
-	public float x, y;
+	public float X, Y;
 	
 	public static readonly Vector2f zero = new Vector2f(0,0);
 	public static readonly Vector2f one = new Vector2f(1,1);
@@ -15,29 +15,29 @@ public struct Vector2f {
 	public static readonly Vector2f down = new Vector2f(0,-1);
 	
 	public Vector2f(float x, float y) {
-		this.x = x;
-		this.y = y;
+		this.X = x;
+		this.Y = y;
 	}
 	public Vector2f(double x, double y) {
-		this.x = (float)x;
-		this.y = (float)y;
+		this.X = (float)x;
+		this.Y = (float)y;
 	}
 	
 	public float magnitude {
 		get{
-			return (float)Math.Sqrt(x*x + y*y);
+			return (float)Math.Sqrt(X*X + Y*Y);
 		}
 	}
 
 	public void Normalize() {
 		float magnitude = this.magnitude;
-		x /= magnitude;
-		y /= magnitude;
+		X /= magnitude;
+		Y /= magnitude;
 	}
 
 	public static Vector2f Normalize(Vector2f a) {
 		float magnitude = a.magnitude;
-		return new Vector2f(a.x/magnitude, a.y/magnitude);
+		return new Vector2f(a.X/magnitude, a.Y/magnitude);
 	}
 	
 	public override bool Equals(object other) {
@@ -45,53 +45,53 @@ public struct Vector2f {
 			return false;
 		}
 		Vector2f v = (Vector2f) other;
-		return x == v.x &&
-			y == v.y;
+		return X == v.X &&
+			Y == v.Y;
 	}
 	
 	public override string ToString () {
-		return string.Format ("[Vector2f]"+x+","+y);
+		return string.Format ("[Vector2f]"+X+","+Y);
 	}
 	
 	public override int GetHashCode () {
-		return x.GetHashCode () ^ y.GetHashCode () << 2;
+		return X.GetHashCode () ^ Y.GetHashCode () << 2;
 	}
 
 	public float DistanceSquare(Vector2f v) {
 		return Vector2f.DistanceSquare(this, v);
 	}
 	public static float DistanceSquare(Vector2f a, Vector2f b) {
-		float cx = b.x - a.x;
-		float cy = b.y - a.y;
+		float cx = b.X - a.X;
+		float cy = b.Y - a.Y;
 		return cx*cx + cy*cy;
 	}
 	
 	public static bool operator == (Vector2f a, Vector2f b) {
-		return a.x == b.x && 
-			a.y == b.y;
+		return a.X == b.X && 
+			a.Y == b.Y;
 	}
 	
 	public static bool operator != (Vector2f a, Vector2f b) {
-		return a.x != b.x ||
-			a.y != b.y;
+		return a.X != b.X ||
+			a.Y != b.Y;
 	}
 	
 	public static Vector2f operator - (Vector2f a, Vector2f b) {
-		return new Vector2f( a.x-b.x, a.y-b.y);
+		return new Vector2f( a.X-b.X, a.Y-b.Y);
 	}
 	
 	public static Vector2f operator + (Vector2f a, Vector2f b) {
-		return new Vector2f( a.x+b.x, a.y+b.y);
+		return new Vector2f( a.X+b.X, a.Y+b.Y);
 	}
 
 	public static Vector2f operator * (Vector2f a, int i) {
-		return new Vector2f(a.x*i, a.y*i);
+		return new Vector2f(a.X*i, a.Y*i);
 	}
 	
 	public static Vector2f Min(Vector2f a, Vector2f b) {
-		return new Vector2f(Math.Min(a.x, b.x), Math.Min(a.y, b.y));
+		return new Vector2f(Math.Min(a.X, b.X), Math.Min(a.Y, b.Y));
 	}
 	public static Vector2f Max(Vector2f a, Vector2f b) {
-		return new Vector2f(Math.Max(a.x, b.x), Math.Max(a.y, b.y));
+		return new Vector2f(Math.Max(a.X, b.X), Math.Max(a.Y, b.Y));
 	}
 }

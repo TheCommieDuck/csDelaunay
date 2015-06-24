@@ -29,8 +29,8 @@ namespace csDelaunay {
 		private Vector2f coord;
 		public Vector2f Coord {get{return coord;}set{coord=value;}}
 
-		public float x {get{return coord.x;}}
-		public float y {get{return coord.y;}}
+		public float x {get{return coord.X;}}
+		public float y {get{return coord.Y;}}
 
 		private int vertexIndex;
 		public int VertexIndex {get{return vertexIndex;}}

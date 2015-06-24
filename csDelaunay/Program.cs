@@ -9,7 +9,7 @@ namespace csDelaunay
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             for (int i = 0; i < 3; ++i)
             {
@@ -21,7 +21,7 @@ namespace csDelaunay
                 }
                 Stopwatch s = new Stopwatch();
                 s.Start();
-                var n = new Voronoi(vertices, new Rectf(0, 0, 100, 100));
+                var n = new Voronoi(vertices, new Rectf(0, 0, 100, 100), 1);
                 s.Stop();
                 Console.WriteLine(s.ElapsedMilliseconds);
             }

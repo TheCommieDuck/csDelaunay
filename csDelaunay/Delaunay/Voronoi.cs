@@ -316,28 +316,28 @@ namespace csDelaunay {
 					float a = 0;
 					// For all vertices except last
 					for (int j = 0; j < region.Count-1; j++) {
-						x0 = region[j].x;
-						y0 = region[j].y;
-						x1 = region[j+1].x;
-						y1 = region[j+1].y;
+						x0 = region[j].X;
+						y0 = region[j].Y;
+						x1 = region[j+1].X;
+						y1 = region[j+1].Y;
 						a = x0*y1 - x1*y0;
 						signedArea += a;
-						centroid.x += (x0 + x1)*a;
-						centroid.y += (y0 + y1)*a;
+						centroid.X += (x0 + x1)*a;
+						centroid.Y += (y0 + y1)*a;
 					}
 					// Do last vertex
-					x0 = region[region.Count-1].x;
-					y0 = region[region.Count-1].y;
-					x1 = region[0].x;
-					y1 = region[0].y;
+					x0 = region[region.Count-1].X;
+					y0 = region[region.Count-1].Y;
+					x1 = region[0].X;
+					y1 = region[0].Y;
 					a = x0*y1 - x1*y0;
 					signedArea += a;
-					centroid.x += (x0 + x1)*a;
-					centroid.y += (y0 + y1)*a;
+					centroid.X += (x0 + x1)*a;
+					centroid.Y += (y0 + y1)*a;
 
 					signedArea *= 0.5f;
-					centroid.x /= (6*signedArea);
-					centroid.y /= (6*signedArea);
+					centroid.X /= (6*signedArea);
+					centroid.Y /= (6*signedArea);
 					// Move site to the centroid of its Voronoi cell
 					newPoints.Add(centroid);
 					site = sites.Next();
@@ -376,10 +376,10 @@ namespace csDelaunay {
 		}
 		
 		public static int CompareByYThenX(Site s1, Vector2f s2) {
-			if (s1.y < s2.y) return -1;
-			if (s1.y > s2.y) return 1;
-			if (s1.x < s2.x) return -1;
-			if (s1.x > s2.x) return 1;
+			if (s1.y < s2.Y) return -1;
+			if (s1.y > s2.Y) return 1;
+			if (s1.x < s2.X) return -1;
+			if (s1.x > s2.X) return 1;
 			return 0;
 		}
 	}
